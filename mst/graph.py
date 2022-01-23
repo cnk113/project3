@@ -35,4 +35,19 @@ class Graph:
         We highly encourage the use of priority queues in your implementation. See the heapq
         module, particularly the `heapify`, `heappop`, and `heappush` functions.
         """
-        self.mst = 'TODO'
+        self.mst = np.zeros_like(self.adj_mat)
+        num = self.adj_mat.shape[0]
+        hp = [(self.adj_mat[0, i],(0,i)) for i in range(1, num)]
+        heapq.heapify(hp) # Encoding is (distance, (i,j))
+        visited = set({0}) # First node is 0,0
+        while hp:
+            popped = heapq.heappop(hp)
+            i = popped[1][0]
+            j = popped[1][1]
+            if j in visited or popped[0] == 0:
+                continue
+            visited.add(j)
+            self.mst[i, j] = self.adj_mat[i, j]
+            self.mst[j, i] = self.adj_mat[i, j] # For symmetry
+            for new in range(0, num): # Takes right of the diagonal // Why doesnt range(j+1,num) work??
+                heapq.heappush(hp,(self.adj_mat[j, new], (j,new))) # Adds new adjacent nodes

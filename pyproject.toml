@@ -1,0 +1,11 @@
+[build-system]
+requires = ["flit_core >=3.2,<4", "sklearn", "numpy", "pytest"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "mst"
+authors = [{name = "Chang Kim", email = "chang.kim@ucsf.edu"}]
+readme = "README.md"
+license = {file = "LICENSE"}
+classifiers = ["License :: OSI Approved :: MIT License"]
+dynamic = ["version", "description"]

@@ -33,6 +33,9 @@ def check_mst(adj_mat: np.ndarray,
             total += mst[i, j]
     assert approx_equal(total, expected_weight), 'Proposed MST has incorrect expected weight'
 
+    assert np.allclose(mst, mst.T), "MST not symmetric"
+
+
 
 def test_mst_small():
     """ Unit test for the construction of a minimum spanning tree on a small graph """
@@ -59,4 +62,8 @@ def test_mst_single_cell_data():
 
 def test_mst_student():
     """ TODO: Write at least one unit test for MST construction """
-    pass
+    file_path = './data/small.csv'
+    g = Graph(file_path)
+    assert None == g.mst
+    #g.construct_mst()
+    #assert None != g.mst
