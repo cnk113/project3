@@ -66,4 +66,4 @@ def test_mst_student():
     file_path = './data/small.csv'
     g = Graph(file_path)
     g.construct_mst()
-    assert g.mst == np.array([[0, 5, 0, 0],[5, 0, 1, 2],[0, 1, 0, 0],[0, 2, 0, 0]])
+    assert np.allclose(np.array([[0, 5, 0, 0],[5, 0, 1, 2],[0, 1, 0, 0],[0, 2, 0, 0]]), g.mst)
