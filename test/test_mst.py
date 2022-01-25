@@ -65,6 +65,5 @@ def test_mst_student():
     """ TODO: Write at least one unit test for MST construction """
     file_path = './data/small.csv'
     g = Graph(file_path)
-    g2 = g
-    g2.construct_mst()
-    assert g.mst == None and g2.mst != None
+    g.construct_mst()
+    assert g.mst == np.array([[0, 5, 0, 0],[5, 0, 1, 2],[0, 1, 0, 0],[0, 2, 0, 0]])
