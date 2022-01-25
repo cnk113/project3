@@ -34,6 +34,7 @@ def check_mst(adj_mat: np.ndarray,
     assert approx_equal(total, expected_weight), 'Proposed MST has incorrect expected weight'
 
     assert np.allclose(mst, mst.T), "MST not symmetric"
+    assert len(mst[mst!= 0]) == (mst.shape[0] - 1) * 2, "Incorrect number of edges"
 
 
 
@@ -64,6 +65,6 @@ def test_mst_student():
     """ TODO: Write at least one unit test for MST construction """
     file_path = './data/small.csv'
     g = Graph(file_path)
-    assert None == g.mst
-    #g.construct_mst()
-    #assert None != g.mst
+    g2 = g
+    g2.construct_mst()
+    assert g.mst == None and g2.mst != None
